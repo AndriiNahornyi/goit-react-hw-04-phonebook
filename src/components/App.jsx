@@ -4,6 +4,9 @@ import { Filter } from './Filter';
 import { ContactList } from './ContactList';
 import { nanoid } from 'nanoid';
 import css from '../components/App.module.css';
+
+const CONTACT_LIST_LOCAL_KEY = 'contact-list-local';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -14,6 +17,20 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const localeContactList = localStorage.getItem(CONTACT_LIST_LOCAL_KEY);
+    if (localeContactList) {
+      this.setState({ contacts: JSON.parse(localeContactList) });
+    }
+  }
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem(CONTACT_LIST_LOCAL_KEY, JSON.stringify(contacts));
+    }
+  }
+
   handleSubmit = (name, number) => {
     if (this.state.contacts.some(contact => contact.name === name)) {
       return alert(`${name} is already in contacts`);
