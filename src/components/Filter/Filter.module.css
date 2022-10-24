@@ -1,0 +1,19 @@
+.filterLabel {
+  margin-left: 50px;
+  font-size: 14px;
+  color: grey;
+}
+.filterInput {
+  margin-top: 5px;
+  margin-left: 50px;
+  margin-right: 50px;
+  width: 100vw;
+  height: 30px;
+  color: tomato;
+  background-color: antiquewhite;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid grey;
+  border-radius: 6px;
+  outline: none;
+}
