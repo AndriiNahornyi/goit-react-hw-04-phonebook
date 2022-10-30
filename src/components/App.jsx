@@ -42,7 +42,6 @@ export const App = () => {
     ]);
   };
   const getFilterContacts = () => {
-    console.log('contacts', contacts);
     return contacts.filter(contact =>
       contact.name
         .toLocaleLowerCase()
